@@ -1,4 +1,9 @@
 {
   "name": "Channels",
-  "displayName": "Channels"
+  "displayName": "Channels",
+  "android":{
+	"adaptiveIcon":{
+		"foregroundImage":"./icon.png"
+	}
+  }
 }
