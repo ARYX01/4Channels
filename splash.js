@@ -4,8 +4,9 @@ import { Animated, View, Image, Dimensions, StyleSheet } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const circleSize=150;
-const poz=circleSize*2-(circleSize*2/5);
+const circleSize= 150;
+const poz		= circleSize*2 - (circleSize*2/5);
+const logoScale	= (windowHeight >900)?22:(windowHeight >700)?18:12;
 
 
 export default function Splash(props){
@@ -14,7 +15,7 @@ export default function Splash(props){
 	const translationUp = useRef(new Animated.Value(windowHeight+circleSize*2)).current;
 	const grow = useRef(new Animated.Value(1)).current;
 	const show = useRef(new Animated.Value(0)).current;
-
+	
 	useEffect(() => {
 		Animated.sequence([
 			Animated.parallel([
@@ -31,7 +32,7 @@ export default function Splash(props){
 			]),
 			Animated.parallel([
 				Animated.spring(grow, {
-					toValue: 15,
+					toValue: logoScale,
 					speed:6,
 					bounciness:15,
 					useNativeDriver: true
@@ -73,7 +74,7 @@ export default function Splash(props){
 		</Animated.View>
 		
 		<Animated.Image
-			style={[styles.image, {transform: [{ scale: grow }], opacity:show} ]}
+			style={[styles.image, { transform: [{ scale: grow }], opacity:show } ]}
 			source={require('./logo-full.png')}
 		/>
 		
@@ -93,10 +94,10 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		zIndex:3,
 		left: windowWidth/2-8,
-		top: windowHeight/2-10,
+		top: windowHeight/2-12,
 		resizeMode: 'contain',
-		height: 20,
 		width: 20,
+		height: 20,
 	},
 	circle: {
 		opacity:0.3,
